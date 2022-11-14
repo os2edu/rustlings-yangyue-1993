@@ -4,12 +4,12 @@
 // function.
 // Execute `rustlings hint move_semantics4` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 fn main() {
-    let vec0 = Vec::new();
+    // 因为vec0没有用到所以必须给编译器一个确定的类型去推导他， 而下面的vec1在函数中有用到，所以就不虚一定要给一个类型
+    let vec0: Vec<i32> = Vec::new();
 
-    let mut vec1 = fill_vec(vec0);
+    let mut vec1 = fill_vec();
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
 
@@ -20,7 +20,7 @@ fn main() {
 
 // `fill_vec()` no longer takes `vec: Vec<i32>` as argument
 fn fill_vec() -> Vec<i32> {
-    let mut vec = vec;
+    let mut vec = Vec::new();
 
     vec.push(22);
     vec.push(44);
